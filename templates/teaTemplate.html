@@ -1,0 +1,36 @@
+<td><img src="{{ tea.imageUrl }}"></td>
+<td>
+    <ul class="list-unstyled">
+        <li>
+            <div>
+                <h2>{{ tea.name }}
+                    <span class="pull-right">
+                            Quantity: <select ng-model="itemQuantity" ng-init="itemQuantity = 1">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                            <button class="btn btn-warning" ng-click="cart.addToCart(itemQuantity,tea)">Add To Bag</button>
+                    </span>
+                </h2>
+
+            </div>
+        </li>
+        <li>Price: {{ tea.price / 100 | currency }}</li>
+        <li>Caffeine Scale: {{ tea.caffeineScale }}</li>
+        <li>Ingredients: {{ tea.ingredients }}</li>
+        <li>Rating: {{ tea.rating }}</li>
+        <li>In stock? {{ tea.inStock}}</li>
+        <li>Categories:
+            <ul ng-repeat="category in tea.categories">
+                <li>{{ category }}</li>
+            </ul>
+        </li>
+    </ul>
+</td>
