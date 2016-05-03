@@ -1,0 +1,32 @@
+<div class="container">
+    <div>
+        <h4>My Shopping Bag
+        <span id="total">Order total: {{  }}</span></h4>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <th class="col-md-6">Product</th>
+                <th class="col-md-2">Quantity</th>
+                <th class="col-md-2">Sub-total</th>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in shoppingCart.bag">
+                    <td>
+                    	<h4>{{ item.tea.name }}</h4>
+                    	<img src="{{item.tea.imageUrl}}">
+                    	<h5>Caffeine Scale: {{ item.tea.caffeineScale }}</h5>
+    					<h5>Ingredients: {{ item.tea.ingredients }}</h5>
+    					<h5>Rating: {{ item.tea.rating }}</h5>
+                    </td>
+                    <td>{{ item.quantity }}</td>
+                    <td><strong>{{ (item.tea.price * item.quantity) / 100 | currency}}</strong></td>
+                    <td>
+                    	<button class="btn btn-warning">Edit</button>
+                    	<button class="btn btn-danger">Remove</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

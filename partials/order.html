@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            Search by category:
+            <select ng-model="searchCategory">
+                <option selected="selected"></option>
+                <option value="dark">dark</option>
+                <option value="cold">cold</option>
+                <option value="awesome">awesome</option>
+                <option value="dry">dry</option>
+                <option value="hot">hot</option>
+                <option value="summer">summer</option>
+                <option value="lucid">lucid</option>
+                <option value="warm">warm</option>
+                <option value="winter">winter</option>
+                <option value="spring">spring</option>
+            </select>
+        </div>
+        <div class="col-md-7">
+            <form role="search">
+                <div class="form-group">
+                  Search by name: <input id="nameSearch" type="text" class="search" ng-model="searchText">
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2">
+            <button ng-pluralize type="button" class="btn btn-danger" count="cart.bag.length" when="{ '0': 'Checkout | Bag: Empty', '1': 'Checkout | Bag: 1 Tea', 'other': 'Checkout | Bag: {} Teas' }" ng-click="goToCheckout()">
+            </button>
+        </div>
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th class="col-md-2">Tea</th>
+                    <th>
+                        <span>Information</span>
+                        <span id="sort">Sort By Price:
+                            <select ng-model="priceSort">
+                                <option selected="selected"></option>   
+                                <option value="highest">Highest</option>
+                                <option value="lowest">Lowest</option>
+                            </select>
+                        </span>
+                    </th>
+                </tr>
+            </thead>
+                <tbody>
+                    <tr single-tea ng-repeat="tea in teaData.data | filter: searchText | filter: searchCategory | orderBy: sort(priceSort)" tea-value="tea">
+                    </tr>
+                </tbody>
+        </table>
+    </div>
+</div>
